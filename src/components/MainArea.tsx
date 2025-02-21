@@ -43,7 +43,12 @@ const MainArea = forwardRef<HTMLDivElement, MainAreaProps>(
             </Title>
             {authorized && (
               <Group gap={'lg'} visibleFrom='md'>
-                <FontAwesomeIcon icon={faComments} visibility={'hidden'} />
+                
+<FontAwesomeIcon
+                  icon={faComments}
+                  visibility={(process.env.NEXT_PUBLIC_ENABLE_MESSAGING === 'false' ? 'hidden' : '')}
+                    color='orange'
+                  />
                 <Menu
                   width={260}
                   position="bottom-end"

@@ -4,7 +4,6 @@ import { useLayout } from '../context/LayoutContext';
 import router from 'next/router';
 import { useUser } from '@/context/users';
 import useSocket from '@/hooks/useSocket';
-
 interface ModalProps {
   isOpen: boolean;
   toggleModal: () => void;
@@ -37,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, toggleModal, profileID }) => {
       setError('');
       forceUpdate();
       if (socket) {
-        socket.emit('notifyAttack', { userId: profileID });
+        socket.emit('notifyAttack', { defenderId: profileID, battleId: results.attack_log });
       }
       router.push(`/battle/results/${results.attack_log}`);
       toggleModal();
